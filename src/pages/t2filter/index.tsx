@@ -7,6 +7,7 @@ import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 import { UserIcon } from '@heroicons/react/20/solid'
 import Comment from "~/components/Comment";
 import toast from "react-hot-toast";
+import Image from 'next/image';
 
 const navigation = [
   { name: 'T1 Filter', href: '/t1filter' },
@@ -58,7 +59,7 @@ const CreateT2Comment: NextPage = () => {
           <div className="flex items-center gap-x-12">
             <a href="#" className="-m-1.5 p-1.5">
               <span className="sr-only">Your Company</span>
-              <img className="h-8 w-auto" src="https://assets-global.website-files.com/63c99e73eee7982d78eb62a6/641cd0e8de34777ee5530102_formula.monks.svg" alt="" />
+              <Image className="h-8 w-auto" src="https://assets-global.website-files.com/63c99e73eee7982d78eb62a6/641cd0e8de34777ee5530102_formula.monks.svg" alt="" />
             </a>
             <div className="hidden lg:flex lg:gap-x-12">
               {
@@ -89,9 +90,9 @@ const CreateT2Comment: NextPage = () => {
             <div className="flex items-center justify-between">
               <a href="#" className="-m-1.5 p-1.5">
                 <span className="sr-only">Your Company</span>
-                <img
+                <Image
                     className="h-8 w-auto"
-                    src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
+                    src="https://assets-global.website-files.com/63c99e73eee7982d78eb62a6/641cd0e8de34777ee5530102_formula.monks.svg"
                     alt=""
                 />
               </a>
@@ -133,7 +134,9 @@ const CreateT2Comment: NextPage = () => {
             </div>
             <div className="lg:col-span-8 lg:col-start-5 lg:mt-0">
               <div>
-                <Comment onPost={createComment} />
+                <Comment onPost={(comment, name) => {
+                  void createComment(comment, name);
+                }} />
               </div>
               <h3 className="sr-only">Recent Comments</h3>
               <div className="flow-root">

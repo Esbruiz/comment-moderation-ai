@@ -1,11 +1,12 @@
-export default function Comment({ onPost }) {
-    const handleSubmit = (e) => {
-        e.preventDefault()
-        const { name, comment } = e.target.elements
-        onPost(comment.value, name.value)
-    }
+import {useState} from "react";
+
+const Comment = ({onPost}: { onPost: (comment: string, name: string) => void }) => {
+
+    const [name, setName] = useState('Anonymous');
+    const [comment, setComment] = useState('');
+
     return (
-        <form action="#" onSubmit={(e) => handleSubmit(e)} className="relative">
+        <form className="relative">
             <div className="overflow-hidden rounded-lg border border-gray-300 shadow-sm focus-within:border-indigo-500 focus-within:ring-1 focus-within:ring-indigo-500">
                 <label htmlFor="name" className="sr-only">
                     Name
@@ -14,6 +15,7 @@ export default function Comment({ onPost }) {
                     type="text"
                     name="name"
                     id="name"
+                    onChange={(e) => setName(e.target.value)}
                     className="block w-full border-0 pt-2.5 text-lg font-medium placeholder:text-gray-400 focus:ring-0"
                     placeholder="Name (Leave blank to post as Anonymous)"
                 />
@@ -22,6 +24,7 @@ export default function Comment({ onPost }) {
                 </label>
                 <textarea
                     rows={2}
+                    onChange={(e) => setComment(e.target.value)}
                     name="comment"
                     id="comment"
                     className="block w-full resize-none border-0 py-0 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
@@ -47,7 +50,12 @@ export default function Comment({ onPost }) {
                 <div className="flex items-center justify-end space-x-3 border-t border-gray-200 px-2 py-2 sm:px-3">
                     <div className="flex-shrink-0">
                         <button
-                            type="submit"
+                            onClick={() => {
+                                onPost(comment, name);  // Post comment
+                                setComment('');
+                                setName('Anonymous');
+                            }}
+                            type="button"
                             className="inline-flex items-center rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                         >
                             Post
@@ -58,3 +66,4 @@ export default function Comment({ onPost }) {
         </form>
     )
 }
+export default Comment;

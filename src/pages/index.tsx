@@ -1,5 +1,6 @@
 import { type NextPage } from "next";
 import Head from "next/head";
+import Image from "next/image";
 import {useEffect, useState} from 'react'
 import { Dialog } from '@headlessui/react'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
@@ -40,7 +41,8 @@ const Home: NextPage = () => {
           <div className="flex items-center gap-x-12">
             <a href="#" className="-m-1.5 p-1.5">
               <span className="sr-only">Your Company</span>
-              <img className="h-8 w-auto" src="https://assets-global.website-files.com/63c99e73eee7982d78eb62a6/641cd0e8de34777ee5530102_formula.monks.svg" alt="" />
+              <Image                     height={32}
+                                         width={64} className="h-8 w-auto" src="https://assets-global.website-files.com/63c99e73eee7982d78eb62a6/641cd0e8de34777ee5530102_formula.monks.svg" alt="" />
             </a>
             <div className="hidden lg:flex lg:gap-x-12">
               {
@@ -75,9 +77,11 @@ const Home: NextPage = () => {
             <div className="flex items-center justify-between">
               <a href="#" className="-m-1.5 p-1.5">
                 <span className="sr-only">Your Company</span>
-                <img
+                <Image
+                    height={32}
+                    width={64}
                     className="h-8 w-auto"
-                    src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
+                    src="https://assets-global.website-files.com/63c99e73eee7982d78eb62a6/641cd0e8de34777ee5530102_formula.monks.svg"
                     alt=""
                 />
               </a>

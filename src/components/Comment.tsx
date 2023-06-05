@@ -15,6 +15,7 @@ const Comment = ({onPost}: { onPost: (comment: string, name: string) => void }) 
                     type="text"
                     name="name"
                     id="name"
+                    defaultValue={''}
                     onChange={(e) => setName(e.target.value)}
                     className="block w-full border-0 pt-2.5 text-lg font-medium placeholder:text-gray-400 focus:ring-0"
                     placeholder="Name (Leave blank to post as Anonymous)"
@@ -29,7 +30,7 @@ const Comment = ({onPost}: { onPost: (comment: string, name: string) => void }) 
                     id="comment"
                     className="block w-full resize-none border-0 py-0 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
                     placeholder="Write a comment..."
-                    defaultValue={''}
+                    defaultValue={comment}
                 />
 
                 {/* Spacer element to match the height of the toolbar */}
@@ -52,8 +53,6 @@ const Comment = ({onPost}: { onPost: (comment: string, name: string) => void }) 
                         <button
                             onClick={() => {
                                 onPost(comment, name);  // Post comment
-                                setComment('');
-                                setName('Anonymous');
                             }}
                             type="button"
                             className="inline-flex items-center rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"

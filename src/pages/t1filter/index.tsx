@@ -30,6 +30,12 @@ const CreateT1Comment: NextPage = () => {
                 icon: '🔥',
             });
             return;
+          } else if(error.message === "Illegal content") {
+            toast('Sorry but posting about your favourite colors is not allowed', {
+                icon: '🔥',
+            });
+            return;
+
           } else {
             toast('Something went wrong', {
                 icon: '🔥',
@@ -133,7 +139,8 @@ const CreateT1Comment: NextPage = () => {
         <div className="bg-white w-full">
           <div className="mx-auto max-w-2xl px-4 sm:px-6 lg:grid lg:max-w-7xl lg:grid-cols-12 lg:gap-x-8 lg:px-8">
             <div className="lg:col-span-4 lg:col-start-1 lg:mt-0">
-              <p>Info about settings</p>
+              <p>Info about settings:</p>
+              In this comment section, discussion your favourite color is not allowed, please dont do that.
             </div>
             <div className="lg:col-span-8 lg:col-start-5 lg:mt-0">
               <div>
